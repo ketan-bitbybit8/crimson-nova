@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatchFlix - Decide What to Watch</title>
+    <meta name="description" content="A platform to easily decide common movie choices with a friend.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Screen 1: Welcome -->
+        <div id="screen-welcome" class="screen active">
+            <div class="center-content">
+                <div class="logo">
+                    <span class="icon">🍿</span>
+                    <h1>MatchFlix</h1>
+                </div>
+                <p class="subtitle">Stop scrolling. Start watching.</p>
+                <div class="instructions">
+                    <p>1. We show you some great movies.</p>
+                    <p>2. You vote YES or NO.</p>
+                    <p>3. Pass the phone to your friend.</p>
+                    <p>4. We reveal exactly what you both want to watch.</p>
+                </div>
+                <button id="btn-start" class="btn primary-btn pulse">Start Deciding</button>
+            </div>
+        </div>
+
+        <!-- Screen 2: Voting -->
+        <div id="screen-voting" class="screen">
+            <header class="top-bar">
+                <div class="player-indicator" id="player-indicator">Player 1's Turn</div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </header>
+
+            <div class="card-container">
+                <!-- Movie card injected via JS -->
+                <div id="movie-card" class="movie-card">
+                    <div class="movie-card-inner" id="movie-card-inner">
+                        <div class="movie-genre" id="movie-genre">Sci-Fi</div>
+                        <h2 class="movie-title" id="movie-title">Movie Title</h2>
+                        <div class="movie-meta">
+                            <span id="movie-year">2023</span>
+                        </div>
+                        <p class="movie-desc" id="movie-desc">A brief description of the movie will appear here.</p>
+                    </div>
+                </div>
+
+                <!-- Feedback overlays -->
+                <div id="overlay-yes" class="overlay overlay-yes">YES</div>
+                <div id="overlay-no" class="overlay overlay-no">NO</div>
+            </div>
+
+            <div class="controls">
+                <button id="btn-no" class="action-btn btn-no">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <button id="btn-yes" class="action-btn btn-yes">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M20.66 7.34a5.9 5.9 0 0 0-8.34 0l-.32.32-.32-.32a5.9 5.9 0 0 0-8.34 8.34l8.66 8.66 8.66-8.66a5.9 5.9 0 0 0 0-8.34z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Screen 3: Transition -->
+        <div id="screen-transition" class="screen">
+            <div class="center-content">
+                <div class="icon-large">📱</div>
+                <h2>Great job!</h2>
+                <p>Now, hand the device to the other person.</p>
+                <div class="alert-box">
+                    <p><strong>No peeking!</strong> They will vote on the exact same movies.</p>
+                </div>
+                <button id="btn-next-person" class="btn primary-btn">I'm ready, let's go</button>
+            </div>
+        </div>
+
+        <!-- Screen 4: Results -->
+        <div id="screen-results" class="screen">
+            <div class="center-content results-content">
+                <h2 id="results-title">It's a Match! 🎉</h2>
+                <p id="results-subtitle" class="subtitle">You both want to watch:</p>
+
+                <div id="matches-container" class="matches-list">
+                    <!-- Matches populated via JS -->
+                </div>
+
+                <div class="actions-group">
+                    <button id="btn-keep-swiping" class="btn secondary-btn">Keep Swiping</button>
+                    <button id="btn-restart" class="btn text-btn">Start Over</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="movies.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
